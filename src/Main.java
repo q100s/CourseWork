@@ -14,7 +14,7 @@ public class Main {
         Employee employee10 = new Employee("Svetlana", "Li", "Nikolayevna", 5, 67950, Employee.counter);
         Employee[] employees = {employee1, employee2, employee3, employee4, employee5, employee6, employee7, employee8, employee9, employee10};
         System.out.println(Arrays.toString(employees));
-        countSalaryExpenses(employees);
+        System.out.println("Company's salary expenses per month is " + countSalaryExpenses(employees));
         findMinSalary(employees);
         findMaxSalary(employees);
         countAverageSalaryExpenses(employees, countSalaryExpenses(employees));
@@ -25,7 +25,6 @@ public class Main {
         for (int i = 0; i < employees.length; i++) {
             sum = sum + employees[i].getSalary();
         }
-        System.out.println("Company's salary expenses per month is " + sum);
         return sum;
     }
     public static void findMinSalary(Employee[] employees) {
