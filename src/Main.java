@@ -12,7 +12,8 @@ public class Main {
         Employee employee8 = new Employee("Steven", "Paul", "Jobs", 2, 99999, Employee.counter);
         Employee employee9 = new Employee("Eduard", "Anokhin", "Sergeevich", 4, 55555, Employee.counter);
         Employee employee10 = new Employee("Svetlana", "Li", "Nikolayevna", 5, 67950, Employee.counter);
-        Employee[] employees = {employee1, employee2, employee3, employee4, employee5, employee6, employee7, employee8, employee9, employee10};
+        Employee[] employees = {employee1, employee2, employee3, employee4, null, employee6, employee7, employee8, employee9, employee10};
+
         System.out.println(Arrays.toString(employees));
         System.out.println("Company's salary expenses per month is " + countSalaryExpenses(employees));
         findMinSalary(employees);
@@ -20,45 +21,58 @@ public class Main {
         countAverageSalaryExpenses(employees, countSalaryExpenses(employees));
         getNames(employees);
     }
+
     public static double countSalaryExpenses(Employee[] employees) {
         double sum = 0;
         for (int i = 0; i < employees.length; i++) {
-            sum = sum + employees[i].getSalary();
+            if (employees[i] != null) {
+                sum = sum + employees[i].getSalary();
+            }
         }
         return sum;
     }
+
     public static void findMinSalary(Employee[] employees) {
         int counter = 0;
         double MinSalary = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() < MinSalary) {
-                MinSalary = employees[i].getSalary();
-                counter = i;
+            if (employees[i] != null) {
+                if (employees[i].getSalary() < MinSalary) {
+                    MinSalary = employees[i].getSalary();
+                    counter = i;
+                }
             }
         }
         System.out.println("Employee with the lowest salary is " + employees[counter].getFirstName() + " " +
                 employees[counter].getSecondName() + " " + employees[counter].getMiddleName());
     }
+
     public static void findMaxSalary(Employee[] employees) {
         int counter = 0;
-        double MaxSalary = employees[0].getSalary();
+        double maxSalary = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() > MaxSalary) {
-                MaxSalary = employees[i].getSalary();
-                counter = i;
+            if (employees[i] != null) {
+                if (employees[i].getSalary() > maxSalary) {
+                    maxSalary = employees[i].getSalary();
+                    counter = i;
+                }
             }
         }
         System.out.println("Employee with the highest salary is " + employees[counter].getFirstName() + " " +
                 employees[counter].getSecondName() + " " + employees[counter].getMiddleName());
     }
-    public static void countAverageSalaryExpenses (Employee[] employees, double sum) {
+
+    public static void countAverageSalaryExpenses(Employee[] employees, double sum) {
         double averageSalaryExpenses = sum / employees.length;
         System.out.println("Average salary is " + averageSalaryExpenses);
     }
-    public static void getNames (Employee[] employees) {
+
+    public static void getNames(Employee[] employees) {
         for (int i = 0; i < employees.length; i++) {
-            String str = employees[i].getFirstName() + " " + employees[i].getSecondName() + " " + employees[i].getMiddleName();
-            System.out.println(str);
+            if (employees[i] != null) {
+                String str = employees[i].getFirstName() + " " + employees[i].getSecondName() + " " + employees[i].getMiddleName();
+                System.out.println(str);
+            }
         }
     }
 }
