@@ -1,45 +1,41 @@
 public class Employee {
-    private String firstName;
-    private String secondName;
-    private String middleName;
+    private final String fullName;
     private int department;
     private double salary;
     private int id;
-    static int counter = 0;
-        public Employee(String firstName, String secondName, String middleName, int department, double salary, int id) {
-            this.firstName = firstName;
-            this.secondName = secondName;
-            this.middleName = middleName;
-            this.department = department;
-            this.salary = salary;
-            counter++;
-            this.id = counter;
-        }
+    static int counter;
+    public Employee(String fullName, int department, double salary) {
+        this.fullName = fullName;
+        this.department = department;
+        this.salary = salary;
+        this.id = 1 + counter++;
+    }
     public int getDepartment() {
         return department;
     }
+
     public double getSalary() {
         return salary;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public int getId() {
+        return id;
+    }
+    public void setDepartment(int department) {
+        this.department = department;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
-
     @Override
     public String toString() {
         return "Employee{" +
-                "firstName: " + firstName +
-                ", secondName: " + secondName +
-                ", middleName: " + middleName +
+                "name:" + fullName +
                 ", department: " + department +
                 ", salary: " + salary +
                 ", id:" + id +
