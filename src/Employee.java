@@ -2,13 +2,13 @@ public class Employee {
     private final String fullName;
     private int department;
     private double salary;
-    private int id;
-    static int counter;
+    private final int id;
+    static int counter = 1;
     public Employee(String fullName, int department, double salary) {
         this.fullName = fullName;
         this.department = department;
         this.salary = salary;
-        this.id = 1 + counter++;
+        this.id = counter++;
     }
     public int getDepartment() {
         return department;

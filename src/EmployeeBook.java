@@ -42,7 +42,7 @@ public class EmployeeBook {
     }
     public Employee findEmplWithMinSalary() {
         int counter = 0;
-        double minSalary = empls[0].getSalary();
+        double minSalary = 2_000_000_000;
         for (int i = 0; i < empls.length; i++) {
             if (empls[i] != null) {
                 if (minSalary > empls[i].getSalary()) {
@@ -55,7 +55,7 @@ public class EmployeeBook {
     }
     public Employee findEmplWithMinSalary(int department) {
         int counter = 0;
-        double minSalary = empls[0].getSalary();
+        double minSalary = 2_000_000_000;
         for (int i = 0; i < empls.length; i++) {
             if (empls[i] != null && empls[i].getDepartment() == department) {
                 if (minSalary > empls[i].getSalary()) {
@@ -68,7 +68,7 @@ public class EmployeeBook {
     }
     public Employee findEmplWithMaxSalary() {
         int counter = 0;
-        double maxSalary = empls[0].getSalary();
+        double maxSalary = 0;
         for (int i = 0; i < empls.length; i++) {
             if (empls[i] != null) {
                 if (maxSalary < empls[i].getSalary()) {
@@ -81,7 +81,7 @@ public class EmployeeBook {
     }
     public Employee findEmplWithMaxSalary(int department) {
         int counter = 0;
-        double maxSalary = empls[0].getSalary();
+        double maxSalary = 0;
         for (int i = 0; i < empls.length; i++) {
             if (empls[i] != null && empls[i].getDepartment() == department) {
                 if (maxSalary < empls[i].getSalary()) {
@@ -93,9 +93,19 @@ public class EmployeeBook {
         return empls[counter];
     }
     public double countAverageSalary() {
-        return countSalaryExpenses() / empls.length;
+        double salarySum = 0;
+        int counter = 0;
+        double averageSalary = 0;
+        for (Employee empl : empls) {
+            if (empl != null) {
+                counter++;
+                salarySum = salarySum + empl.getSalary();
+            }
+        }
+        averageSalary = salarySum / counter;
+        return averageSalary;
     }
-    public void countAverageSalary(int department) {
+        public void countAverageSalary(int department) {
         double salarySumInDepart = 0;
         int employeeCounter = 0;
         double averageSalary = 0;
@@ -162,6 +172,10 @@ public class EmployeeBook {
         }
     }
     public void addEmpl(Employee employee) {
+        if (empls[0] != null && empls[1] != null && empls[2] != null && empls[3] != null && empls[4] != null &&
+                empls[5] != null && empls[6] != null && empls[7] != null && empls[8] != null && empls[9] != null) {
+            System.out.println("The company isn't looking for new employees");
+        }
         for (int i = 0; i < empls.length; i++) {
             if (empls[i] == null) {
                 empls[i] = employee;
@@ -171,6 +185,9 @@ public class EmployeeBook {
     }
     public void removeEmplById(int id) {
         for (int i = 0; i < empls.length; i++) {
+            if (empls[i] == null) {
+                continue;
+            }
             if (empls[i].getId() == id) {
                 empls[i] = null;
                 break;
