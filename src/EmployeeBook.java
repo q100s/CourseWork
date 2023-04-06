@@ -172,15 +172,16 @@ public class EmployeeBook {
         }
     }
     public void addEmpl(Employee employee) {
-        if (empls[0] != null && empls[1] != null && empls[2] != null && empls[3] != null && empls[4] != null &&
-                empls[5] != null && empls[6] != null && empls[7] != null && empls[8] != null && empls[9] != null) {
-            System.out.println("The company isn't looking for new employees");
-        }
+        boolean added = false;
         for (int i = 0; i < empls.length; i++) {
             if (empls[i] == null) {
                 empls[i] = employee;
+                added = true;
                 break;
             }
+        }
+        if (!added) {
+            System.out.println("The company isn't looking for new employees");
         }
     }
     public void removeEmplById(int id) {
